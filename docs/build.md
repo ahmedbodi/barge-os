@@ -64,3 +64,13 @@ $ docker run --privileged --name barge-built barge-builder
 $ mkdir -p output
 $ docker cp barge-built:/build/buildroot/output/images/barge.iso output/
 ```
+
+# Rebuilding BuildRoot Configs
+```
+git clone https://github.com/buildroot/buildroot buildroot
+cp ./barge-os/configs/buildroot.config buildroot/.config
+cd buildroot
+make menuconfig <- make any changes, remove old config settings then copy it back to barge-os
+cd ../barge-os
+make
+```
